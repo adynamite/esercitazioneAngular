@@ -1,13 +1,17 @@
 <h1>User Management System</h1>
 <a href="#"(click)="newUser()">New User</a>
 
-<div class="main">
-<div class="users">
+<div class="container-fluid">
+    <div class="row">
+
+<div class="col-8 col-sm">
 <app-users (updateUser)="updateUser($event)"></app-users>
 </div>
 
-<div class="userDetail" *ngIf ="showForm">
+<div class="col-4 col-sm" *ngIf ="showForm">
 <app-user-detail [user]="userSelected"></app-user-detail>
+</div>
+
 </div>
 
 </div>
