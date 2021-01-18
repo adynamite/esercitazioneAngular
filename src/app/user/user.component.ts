@@ -1,5 +1,6 @@
 import { Component,EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../classes/user';
+import {faPencilAlt, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 
 import { UserService } from '../services/user.service';
@@ -10,6 +11,8 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  faPencil=faPencilAlt;
+  faTrash=faTrash;
 
  @Input() user!:User;
  @Output('onDeletedUser') userDeleted= new EventEmitter();
