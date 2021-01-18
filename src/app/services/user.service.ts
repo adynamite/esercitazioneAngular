@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../classes/user';
+import { UserInterface } from '../interfaces/User';
 
 
 @Injectable({
@@ -42,32 +43,35 @@ export class UserService {
   constructor() {
    
    }
-
-  getUsers(){
+   getUsers() {
     return this.users;
   }
 
-  deleteUser(user:User){
-
-    let index=this.users.indexOf(user);
-
-    if(index>=0){
-    this.users.splice(index,1);}
+  getUser(id: number) {
+    return this.users.find(user => user.id === id);
   }
 
-  updateUser(user:User){
-    const idx=this.users.findIndex((v)=>v.id===user.id);
-   
-    if(idx!== -1){
-      this.users[idx]=user;
+  deleteUser(user: UserInterface) {
+    const index = this.users.indexOf(user);
+    if (index >= 0) {
+      this.users.splice(index, 1);
+    }
+
+  }
+
+  updateUser(user: UserInterface) {
+    const idx = this.users.findIndex((v) => v.id === user.id);
+    alert(idx);
+    if (idx !== -1) {
+      this.users[idx] = user;
     }
   }
 
-  createUser(user:User){
 
-      this.users.splice(0,0,user);
-    
+  createUser(user: UserInterface) {
+    user.id = this.users.length + 1;
+    this.users.splice(0, 0, user);
+
   }
-
   
 }
